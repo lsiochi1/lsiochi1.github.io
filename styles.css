@@ -1,0 +1,107 @@
+body {
+  background-color: #dfe3e2;
+  padding-bottom: 20px;
+}
+
+#headerName {
+  background-color: rgb(148, 146, 193);
+  color: #f8f9f8;
+  max-width: 60%;
+  margin: 0 auto;
+  text-align: center;
+  padding: 5px 0 5px 0;
+  flex-direction: column;
+  letter-spacing: 2px;
+}
+
+.resumeContent {
+  max-width: 60%;
+  margin: 0 auto;
+  flex-direction: column;
+}
+
+/* overlay effect from W3 Schools */
+.objectiveImage {
+  width: 100%;
+  height: 50%;
+  align-self: center;
+  flex-direction: column;
+}
+.container {
+  position: relative;
+  width: 100%;
+}
+
+.container:hover .overlay {
+  opacity: 1;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 88%;
+  width: 100%;
+  opacity: 0;
+  transition: 0.5s ease;
+  background-color: #d8644b;
+}
+
+.objectiveText {
+  color: white;
+  font-weight: bold;
+  font-size: 25px;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-family: Arial, sans-serif;
+  letter-spacing: 0.3px;
+}
+
+/*section on page*/
+.subheader {
+  font-family: Cambria;
+  font-weight: bold;
+  font-size: 30px;
+  text-align: center;
+  padding-bottom: 5px;
+  border-bottom: 0.5px solid black;
+  line-height: 0.1em;
+  margin: 10px 0 20px;
+  letter-spacing: 0.3px;
+}
+
+/*creates box around subheader*/
+.subheader span {
+  background: #dfe3e2;
+  padding: 10px 10px;
+  margin-top: 5px;
+}
+
+/*job title*/
+.jobTitle {
+  font-family: Cambria;
+  font-size: 20px;
+  letter-spacing: 0.3px;
+}
+/*creates box around job title*/
+.jobTitle span {
+  background: white;
+  padding: 10px 10px;
+  margin-top: 5px;
+}
+
+.jobDescription {
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.3px;
+  background-color: #dae2e8;
+  padding: 10px;
+  margin: 30px;
+}
