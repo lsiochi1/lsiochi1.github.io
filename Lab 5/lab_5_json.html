@@ -11,9 +11,8 @@
     <div class="wrapper">
       <div class="header">Test JSON page</div>
       <!-- <button class="button" onclick="loadData()">Load Some JSON</button> -->
-      <button class="button" onclick="console.log('buttonCode()');">Click me to replace list entries</button>
+      <button class="button" onclick="console.log(buttonCode());">Click me to replace list entries</button>
       <div class="content">
-        <p id="codeList"></p>
           <li>Delete and re-clone the class repository</li>
           <li>Open <span class="code">lab_5_json.html</span> in your browser</li>
           <li>Open your developer tools and look at the logged data</li>
@@ -278,14 +277,23 @@
       { "name": "Zambia", "code": "ZM" },
       { "name": "Zimbabwe", "code": "ZW" }
     ]
-    
-    sessionStorage.setItem("code", JSON.stringify(countries));
+
+    sessionStorage.setItem("key", JSON.stringify(countries));
 
     function buttonCode(){
-      	const savedCode = sessionStorage.getItem("code");
-      	const json = JSON.parse(savedCode); 
-	      console.log(json.code);
-        document.getElementById("countryList").innerHTML = json.code
+      let savedCode = sessionStorage.getItem("key");
+      let jsonCountries = JSON.parse(savedCode);
+      document.getElementByClassName(".countryList").innerHTML = console.log(jsonCountries[3]);
+      /*console.log(jsonCountries)
+      document.querySelector("ul");
+      
+      for (let i = 0; i < 10; i++) {
+        document.querySelector("ol").innerHTML = console.log(jsonCountries[i]);
+        }*/
+        
+      
+      //document.getElementById("countryList").innerHTML = jsonCountries;
+        
 
    }
   
