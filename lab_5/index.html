@@ -283,7 +283,7 @@
     function buttonCode(){
       let savedCode = sessionStorage.getItem("key");
       let jsonCountries = JSON.parse(savedCode);
-      document.getElementByClassName(".countryList").innerHTML = console.log(jsonCountries[3]);
+      document.getElementsByClassName(".countryList").innerHTML = jsonCountries;
       /*console.log(jsonCountries)
       document.querySelector("ul");
       
