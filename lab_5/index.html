@@ -11,13 +11,14 @@
     <div class="wrapper">
       <div class="header">Test JSON page</div>
       <!-- <button class="button" onclick="loadData()">Load Some JSON</button> -->
-      <button class="button" onclick="console.log(buttonCode());">Click me to replace list entries</button>
+      <button class="button" onclick="buttonCode()">Click me to replace list entries</button>
       <div class="content">
+        <ol class = "countryList">
           <li>Delete and re-clone the class repository</li>
           <li>Open <span class="code">lab_5_json.html</span> in your browser</li>
           <li>Open your developer tools and look at the logged data</li>
           <li>In your console, write code to:
-            <ol class="countryList">
+            <ol>
               <li>At the click of the button above</li>
               <li>Loop through the 'countries' variable</li>
               <li>Replace this list's entries with country names</li>
@@ -25,7 +26,8 @@
               <li>Randomize which fifty countries are displayed on load</li>
             </ol>
           </li>
-        </ul>
+        </ol>
+        
       </div>
       <div class="footer"></div>
     </div>
@@ -278,24 +280,29 @@
       { "name": "Zimbabwe", "code": "ZW" }
     ]
 
-    sessionStorage.setItem("key", JSON.stringify(countries));
+    console.log("List of countries in the world", countries);
+    sessionStorage.setItem("countriesArray", JSON.stringify(countries));
 
     function buttonCode(){
-      let savedCode = sessionStorage.getItem("key");
-      let jsonCountries = JSON.parse(savedCode);
-      document.getElementsByClassName(".countryList").innerHTML = jsonCountries;
-      /*console.log(jsonCountries)
-      document.querySelector("ul");
-      
-      for (let i = 0; i < 10; i++) {
-        document.querySelector("ol").innerHTML = console.log(jsonCountries[i]);
-        }*/
-        
-      
-      //document.getElementById("countryList").innerHTML = jsonCountries;
-        
+      const savedCode = sessionStorage.getItem("countriesArray");
+      const jsonCountries = JSON.parse(savedCode);
+      const countNameArray = jsonCountries.map((i) => i.name);
+      const countryList = document.querySelector('.countryList');
+      countryList.innerHTML = '';
 
-   }
+      for(let i = 0; i < 50; i++){
+        const selectName = getRandomIntInclusive(0,242);
+        let el = document.createElement("li");
+        el.innerText = countNameArray[selectName];
+        countryList.appendChild(el);
+      }
+    }
+
+    function getRandomIntInclusive(min, max){
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max-min+1)) +min;
+    }
   
   </script>
 </body>
