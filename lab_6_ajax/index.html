@@ -11,19 +11,23 @@
     <div class="wrapper">
       <div class="header">Test AJAX page</div>
       <button class="button" onclick="loadData()">Load Some JSON</button>
-      <div class="content"></div>
+      <div class="content">
+        <ol class = "orderList">
+        </ol>
+
+      </div>
+
       <div class="footer"></div>
     </div>
   </div>
   <script>
-
     function loadData() {
       fetch('ajax_sample.json') //gets something from local json file
         .then(res => res.json()) //returns json form of data
         .then(res => {
           const a = res.map(c => c.name + ", " + c.code); //retrieves json data
 
-          const newArray = document.querySelector('.content'); //selects class 'content', creates object named "newArray"
+          const newArray = document.querySelector('.orderList'); //selects class 'content', creates object named "newArray"
           newArray.innerHTML = ''; //clears the class 'content'
 
           //loop that goes through each json item 
@@ -32,7 +36,8 @@
             let item = document.createElement("li");  //makes variable "item" a list item
             item.innerText = a[selectName];   //uses variable 'item' to make an item in array
             newArray.appendChild(item);   //adds item to new array
-            }  
+            } 
+
         }) 
       }
 
