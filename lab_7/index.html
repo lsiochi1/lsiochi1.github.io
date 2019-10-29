@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Test AJAX page</title>
+  <link rel="stylesheet" type="text/css" href="./lab_styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="wrapper">
+      <div class="header">UMD Bus Routes</div>
+      <button class="button" onclick="loadData()">Load Some JSON</button>
+      <div class="content">
+        <ul class="text"></ul>
+      </div>
+
+      <div class="footer"></div>
+    </div>
+  </div>
+  <script>
+    url = 'https://api.umd.io/v0/bus/routes'
+
+    function loadData() {
+      fetch(url)
+        .then(res => res.json())
+        .then(res => {
+          // you can now work in this area
+          const a = res.map(c => c.title);
+           
+          const newArray = document.querySelector('.text');
+          newArray.innerHTML = '';
+
+          for(i=0; i < res.length; i++){
+            let selectRoute = i;
+            let item = document.createElement("li");
+            item.innerText = a[selectRoute];
+            newArray.appendChild(item); 
+           }
+          
+          return a;
+          
+        })
+
+        .then(res => {
+          routeName = res.find(({route_id}) => route_id);
+          console.log(routeName);
+          document.getElementsByTagName('div')[2].innerHTML = "UMD Bus Route" + " " + routeName.title;
+          return routeName;
+        })
+
+        .catch(error => {
+          console.log(error);
+        })
+        //.then(res => console.log('routes', url))
+        /*.then(res => {
+          let myArr = Array.from(a);
+          return myArr;
+        })*/
+        .then(data => document.querySelector(".content").innerText = data)
+    }
+  </script>
+</body>
+
+</html>
