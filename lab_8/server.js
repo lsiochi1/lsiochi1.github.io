@@ -35,18 +35,20 @@ app.use(express.json());
  *  - Express: app.use()
  *    https://expressjs.com/en/4x/api.html#app.use
  */
-app.use(express.static('public'));
+app.use(express.static('public')); // static directory contains all webpage things
 
 // this is a single route, in the simplest possible format
 // the simplest format is not necessarily the best one.
 // this is, right now, an introduction to Callback Hell
 // but it is okay for a first-level example
 app.get('/api', (req, res) => {
-  const baseURL = 'https://api.umd.io/v0/bus/routes';
+  const baseURL = 'https://api.umd.io/v0/courses/list';
   fetch(baseURL)
     .then((r) => r.json())
+    .then((r) => r.filter((course) => course.course_id.includes('INST')))
     .then((data) => {
-      console.log(data);
+      // eslint-disable-next-line arrow-parens
+      console.log(data.filter(c => c.dept_id === 'INST'));
       res.send({ data: data });
     })
     .catch((err) => {

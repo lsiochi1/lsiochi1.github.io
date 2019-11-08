@@ -16,6 +16,7 @@
     </div>
   </div>
   <script>
+
     function loadData() {
       console.log('fetch'); // confirm code is running on click
       fetch('/api')
@@ -24,9 +25,20 @@
           console.log(res); // logging step to check what we got
           return res;
         })
-        .then(res => res.data.map(c => c.route_id))
+        .then(res => res.data.map(c => c.course_id))
         .then(codes => document.querySelector(".content").innerText = codes);
-    }
+        fetch('/api')
+            .then(res => res.json())
+            .then(res => res.data.map(c => c.name))
+            .then(name => {
+              for(let i=0; i < courses.length; i+=1) {
+                let item = document.createElement("li");
+                var courseList = courses[i].toString() + ": " + name[i].toString();
+                item.innerText = courseList;
+                content.appendChild(item);
+              }})    
+        .then(codes => document.querySelector(".content").innerText = codes);
+      }
   </script>
 </body>
 
